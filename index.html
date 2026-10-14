@@ -14,8 +14,8 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            /* Se combina un degradado translúcido con tu imagen de fondo para mantener la legibilidad */
-            background: linear-gradient(rgba(13, 27, 42, 0.85), rgba(27, 57, 107, 0.85)), url('fondo.jpg');
+            /* Fondo usando tu imagen combinada 'menuavatar' con un filtro oscuro translúcido para legibilidad */
+            background: linear-gradient(rgba(13, 27, 42, 0.8), rgba(27, 57, 107, 0.8)), url('menuavatar');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -24,11 +24,34 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Elemento flotante con la imagen de movimiento videoframe_12538.png */
+        .floating-frame {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 2px solid #4ea8de;
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(78, 168, 222, 0.6);
+            animation: pulse-glow 2.5s infinite alternate;
+            z-index: 10;
+        }
+
+        @keyframes pulse-glow {
+            0% { transform: scale(1); box-shadow: 0 0 10px rgba(78, 168, 222, 0.4); }
+            100% { transform: scale(1.08); box-shadow: 0 0 20px rgba(230, 57, 70, 0.8); }
         }
 
         .hero-section {
             padding: 40px 20px 20px 20px;
             text-align: center;
+            position: relative;
         }
 
         .avatar-container {
@@ -105,25 +128,37 @@
             background: rgba(13, 27, 42, 0.5);
             backdrop-filter: blur(5px);
         }
+
+        /* Ajuste responsivo para celulares */
+        @media (max-width: 576px) {
+            .floating-frame {
+                width: 50px;
+                height: 50px;
+                top: 10px;
+                right: 10px;
+            }
+        }
     </style>
 </head>
 <body>
 
+    <!-- Imagen de movimiento flotante en la esquina -->
+    <img src="videoframe_12538.png" alt="Elemento dinámico MAC" class="floating-frame">
+
     <div class="container">
-        <!-- Cabecera con Avatar -->
+        <!-- Cabecera con Avatar 'mayito admin.jpeg' -->
         <div class="hero-section">
             <div class="avatar-container">
-                <!-- Asegúrate de que tu avatar mantenga este nombre o ajústalo aquí -->
-                <img src="avatar soprote mario.jpg" alt="Avatar Mario Soporte" class="avatar-img">
+                <img src="mayito admin.jpeg" alt="Avatar Mayito Admin" class="avatar-img">
             </div>
             <div>
-                <span class="welcome-badge"><i class="fas fa-bolt"></i> Sistema Activo</span>
+                <span class="welcome-badge"><i class="fas fa-bolt"></i> Sistema Activo - Módulos MAC</span>
             </div>
-            <h1 class="fw-bold mb-2">Centro de Mando MAC</h1>
+            <h1 class="fw-bold mb-2">Centro de Mando</h1>
             <p class="text-light opacity-75">Selecciona el módulo al que deseas ingresar:</p>
         </div>
 
-        <!-- Cuadrícula de Enlaces -->
+        <!-- Cuadrícula de Enlaces a tus 4 páginas -->
         <div class="row g-4 pb-5 justify-content-center">
             
             <!-- Directorio MAC -->
