@@ -14,8 +14,7 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            /* Fondo con tu imagen menuavatar.jpeg abarcando toda la pantalla y un sutil filtro oscuro para contraste */
-            background: linear-gradient(rgba(10, 20, 35, 0.7), rgba(15, 32, 67, 0.75)), url('menuavatar.jpeg');
+            background: linear-gradient(rgba(10, 20, 35, 0.75), rgba(15, 32, 67, 0.85)), url('menuavatar.jpeg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -29,7 +28,7 @@
             overflow-x: hidden;
         }
 
-        /* Elemento flotante con la imagen de movimiento videoframe_12538.png */
+        /* Elemento en movimiento flotante en la esquina */
         .floating-frame {
             position: absolute;
             top: 20px;
@@ -50,30 +49,10 @@
         }
 
         .hero-section {
-            padding: 40px 20px 20px 20px;
+            padding: 30px 20px 10px 20px;
             text-align: center;
             position: relative;
-        }
-
-        .avatar-container {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-
-        .avatar-img {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            border: 4px solid #e63946;
-            object-fit: cover;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-            animation: flotar 3s ease-in-out infinite;
-        }
-
-        @keyframes flotar {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+            z-index: 5;
         }
 
         .welcome-badge {
@@ -88,53 +67,164 @@
             box-shadow: 0 4px 10px rgba(230, 57, 70, 0.4);
         }
 
-        /* Tarjetas de menú con efecto cristal esmerilado para que resalten sobre el fondo completo */
-        .card-menu {
-            background: rgba(13, 27, 42, 0.65);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            transition: all 0.3s ease;
+        /* Contenedor Principal Centrado para el Menú Holográfico */
+        .main-menu-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            padding: 20px 0;
+        }
+
+        /* Contenedor del Podio Holográfico */
+        .holographic-podium {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+        }
+
+        /* Tu Avatar como Núcleo Central */
+        .core-avatar-container {
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            z-index: 20;
+            animation: flotar-core 3s ease-in-out infinite;
+        }
+
+        .core-avatar-img {
+            width: 100%;
             height: 100%;
+            border-radius: 50%;
+            border: 5px solid #e63946;
+            object-fit: cover;
+            box-shadow: 0 0 40px rgba(230, 57, 70, 0.7);
+        }
+
+        @keyframes flotar-core {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Órbita de Iconos */
+        .module-icons-orbit {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            animation: orbit-rotate 60s linear infinite;
+        }
+
+        /* Pausar la rotación al pasar el mouse para facilitar el clic */
+        .holographic-podium:hover .module-icons-orbit {
+            animation-play-state: paused;
+        }
+
+        .orbit-icon-link {
+            position: absolute;
             text-decoration: none;
             color: white;
-            overflow: hidden;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.4s ease;
+            transform-origin: center;
         }
 
-        .card-menu:hover {
-            transform: translateY(-8px) scale(1.02);
-            background: rgba(27, 57, 107, 0.75);
-            border-color: #4ea8de;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            color: white;
-        }
+        /* Posicionamiento de los 4 iconos en la órbita (Arriba, Derecha, Abajo, Izquierda) */
+        .orbit-icon-link:nth-child(1) { top: -5%; left: 50%; transform: translate(-50%, 0); } 
+        .orbit-icon-link:nth-child(2) { top: 50%; left: 105%; transform: translate(0, -50%); } 
+        .orbit-icon-link:nth-child(3) { top: 105%; left: 50%; transform: translate(-50%, 0); } 
+        .orbit-icon-link:nth-child(4) { top: 50%; left: -5%; transform: translate(0, -50%); } 
 
-        .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+        .orbit-icon-link:hover {
+            transform: scale(1.3);
             color: #4ea8de;
-            transition: transform 0.3s ease;
+            z-index: 30;
         }
 
-        .card-menu:hover .card-icon {
-            transform: scale(1.2) rotate(10deg);
-            color: #e63946;
+        .orbit-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(13, 27, 42, 0.85);
+            backdrop-filter: blur(8px);
+            border: 2px solid #4ea8de;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.7rem;
+            color: #4ea8de;
+            box-shadow: 0 0 20px rgba(78, 168, 222, 0.5);
+            transition: all 0.4s ease;
+        }
+
+        .orbit-icon-link:hover .orbit-icon {
+            background: rgba(27, 57, 107, 0.95);
+            border-color: #e63946;
+            color: #fff;
+            box-shadow: 0 0 30px rgba(230, 57, 70, 0.8);
+        }
+
+        .orbit-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 8px;
+            background: rgba(13, 27, 42, 0.9);
+            padding: 3px 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+
+        /* La Plataforma Luminosa Inferior (Base) */
+        .light-platform {
+            position: absolute;
+            bottom: 10px;
+            width: 260px;
+            height: 50px;
+            background: radial-gradient(ellipse at center, rgba(78, 168, 222, 0.6) 0%, rgba(78, 168, 222, 0) 70%);
+            border-radius: 50%;
+            filter: blur(8px);
+            z-index: 1;
+        }
+
+        @keyframes orbit-rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 15px;
             font-size: 0.85rem;
             color: rgba(255, 255, 255, 0.7);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(13, 27, 42, 0.7);
+            background: rgba(13, 27, 42, 0.8);
             backdrop-filter: blur(8px);
+            z-index: 5;
         }
 
         /* Ajuste responsivo para celulares */
         @media (max-width: 576px) {
+            .holographic-podium {
+                width: 260px;
+                height: 260px;
+            }
+            .core-avatar-container {
+                width: 105px;
+                height: 105px;
+            }
+            .orbit-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
+            }
             .floating-frame {
                 width: 50px;
                 height: 50px;
@@ -149,69 +239,59 @@
     <!-- Imagen de movimiento flotante en la esquina -->
     <img src="videoframe_12538.png" alt="Elemento dinámico MAC" class="floating-frame">
 
-    <div class="container">
-        <!-- Cabecera con Avatar 'mayito admin.jpeg' -->
-        <div class="hero-section">
-            <div class="avatar-container">
-                <img src="mayito admin.jpeg" alt="Avatar Mayito Admin" class="avatar-img">
-            </div>
-            <div>
-                <span class="welcome-badge"><i class="fas fa-bolt"></i> Sistema Activo - Módulos MAC</span>
-            </div>
-            <h1 class="fw-bold mb-2">Centro de Mando</h1>
-            <p class="text-light opacity-85">Selecciona el módulo al que deseas ingresar:</p>
+    <!-- Cabecera -->
+    <div class="hero-section">
+        <div>
+            <span class="welcome-badge"><i class="fas fa-bolt"></i> Sistema Activo - Módulos MAC</span>
         </div>
+        <h1 class="fw-bold mb-1 text-white">Centro de Mando</h1>
+        <p class="text-light opacity-75 small">Toca o selecciona un módulo para ingresar:</p>
+    </div>
 
-        <!-- Cuadrícula de Enlaces a tus 4 páginas -->
-        <div class="row g-4 pb-5 justify-content-center">
+    <!-- Menú Holográfico Central Orbital -->
+    <div class="container main-menu-wrapper">
+        <div class="holographic-podium">
             
-            <!-- Directorio MAC -->
-            <div class="col-12 col-md-6 col-lg-5">
-                <a href="https://registro03coah.github.io/directorioMAC/" class="card card-menu p-4 d-block">
-                    <div class="card-body text-center">
-                        <div class="card-icon"><i class="fas fa-address-book"></i></div>
-                        <h3 class="h4 fw-bold mb-2">Directorio MAC</h3>
-                        <p class="text-light opacity-75 small mb-0">Consulta rápida de contactos, extensiones y personal.</p>
-                    </div>
-                </a>
+            <!-- 1. Tu Avatar como Núcleo Central -->
+            <div class="core-avatar-container">
+                <img src="mayito admin.jpeg" alt="Avatar Mayito Admin" class="core-avatar-img">
             </div>
 
-            <!-- Sistema de Reportes MAC -->
-            <div class="col-12 col-md-6 col-lg-5">
-                <a href="https://registro03coah.github.io/sistema-reportes-mac/" class="card card-menu p-4 d-block">
-                    <div class="card-body text-center">
-                        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
-                        <h3 class="h4 fw-bold mb-2">Sistema de Reportes</h3>
-                        <p class="text-light opacity-75 small mb-0">Generación y seguimiento de reportes diarios en la nube.</p>
-                    </div>
+            <!-- 2. Órbita con tus 4 Páginas / Módulos -->
+            <div class="module-icons-orbit">
+                
+                <!-- Directorio MAC -->
+                <a href="https://registro03coah.github.io/directorioMAC/" class="orbit-icon-link">
+                    <div class="orbit-icon"><i class="fas fa-address-book"></i></div>
+                    <span class="orbit-label">Directorio MAC</span>
                 </a>
+
+                <!-- Sistema de Reportes -->
+                <a href="https://registro03coah.github.io/sistema-reportes-mac/" class="orbit-icon-link">
+                    <div class="orbit-icon"><i class="fas fa-chart-line"></i></div>
+                    <span class="orbit-label">Reportes Diarios</span>
+                </a>
+
+                <!-- Transmisiones MAC -->
+                <a href="https://registro03coah.github.io/TransmisionesMAC/" class="orbit-icon-link">
+                    <div class="orbit-icon"><i class="fas fa-broadcast-tower"></i></div>
+                    <span class="orbit-label">Transmisiones</span>
+                </a>
+
+                <!-- Folios y Oficios -->
+                <a href="https://registro03coah.github.io/Foliosoficios/" class="orbit-icon-link">
+                    <div class="orbit-icon"><i class="fas fa-folder-open"></i></div>
+                    <span class="orbit-label">Folios y Oficios</span>
+                </a>
+
             </div>
 
-            <!-- Transmisiones MAC -->
-            <div class="col-12 col-md-6 col-lg-5">
-                <a href="https://registro03coah.github.io/TransmisionesMAC/" class="card card-menu p-4 d-block">
-                    <div class="card-body text-center">
-                        <div class="card-icon"><i class="fas fa-broadcast-tower"></i></div>
-                        <h3 class="h4 fw-bold mb-2">Transmisiones MAC</h3>
-                        <p class="text-light opacity-75 small mb-0">Control, enlaces y accesos a transmisiones en vivo.</p>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Folios y Oficios -->
-            <div class="col-12 col-md-6 col-lg-5">
-                <a href="https://registro03coah.github.io/Foliosoficios/" class="card card-menu p-4 d-block">
-                    <div class="card-body text-center">
-                        <div class="card-icon"><i class="fas fa-folder-open"></i></div>
-                        <h3 class="h4 fw-bold mb-2">Folios y Oficios</h3>
-                        <p class="text-light opacity-75 small mb-0">Gestión, control y seguimiento de folios y documentación.</p>
-                    </div>
-                </a>
-            </div>
-
+            <!-- 3. Base Luminosa de Holograma -->
+            <div class="light-platform"></div>
         </div>
     </div>
 
+    <!-- Pie de página -->
     <footer>
         <p class="mb-0">Módulos MAC © 2026 - Diseñado para optimizar operación y soporte.</p>
     </footer>
