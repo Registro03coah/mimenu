@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Centro de Mando - Módulos MAC</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -25,39 +25,41 @@
             flex-direction: column;
             justify-content: space-between;
             position: relative;
+            background-color: #0d1b2a; /* Color de respaldo mientras carga el video */
         }
 
-        /* Video de Fondo a Pantalla Completa en Bucle */
+        /* Video de Fondo optimizado para pantalla completa tanto en PC como en Celulares */
         #bg-video {
             position: fixed;
-            right: 0;
-            bottom: 0;
+            top: 50%;
+            left: 50%;
             min-width: 100%;
             min-height: 100%;
             width: auto;
             height: auto;
+            transform: translate(-50%, -50%);
             z-index: -100;
-            object-fit: cover;
+            object-fit: cover; /* Asegura que cubra toda la pantalla sin distorsionarse ni verse mocho */
             filter: brightness(0.85) contrast(1.1);
         }
 
         .hero-section {
-            padding: 20px 20px 0 20px;
+            padding: 15px 15px 0 15px;
             text-align: center;
             position: relative;
             z-index: 5;
         }
 
-        /* Insignia superior con bucle de cambio de color (Rojo a Verde) */
+        /* Insignia superior con bucle de cambio de color */
         .welcome-badge {
             background-color: #e63946;
             color: white;
-            padding: 5px 16px;
+            padding: 4px 14px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
             display: inline-block;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             box-shadow: 0 4px 15px rgba(230, 57, 70, 0.5);
             animation: color-pulse 4s infinite alternate;
         }
@@ -68,38 +70,38 @@
             100% { background-color: #2ec4b6; box-shadow: 0 4px 15px rgba(46, 196, 182, 0.6); }
         }
 
-        /* Título Principal más grande */
+        /* Título Principal grande */
         .main-title {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 800;
             letter-spacing: 1px;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.7);
-            margin-bottom: 2px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+            margin-bottom: 0px;
         }
 
         .subtitle {
-            font-size: 0.95rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+            font-size: 0.85rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
 
         /* Contenedor Central ajustado a la altura de referencia baja */
         .main-menu-wrapper {
             display: flex;
             flex-direction: column;
-            justify-content: flex-end; /* Posiciona los elementos hacia la zona baja (como el rectángulo amarillo) */
+            justify-content: flex-end;
             align-items: center;
             flex-grow: 1;
-            padding-bottom: 45px; /* Ajuste fino de altura */
+            padding-bottom: 35px;
             z-index: 5;
         }
 
-        /* Barra Flotante de Accesos en Línea */
+        /* Barra Flotante de Accesos en Línea (5 elementos ahora) */
         .inline-menu-bar {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 25px;
-            max-width: 900px;
+            gap: 18px;
+            max-width: 1000px;
             animation: flotar-carrusel 4s ease-in-out infinite;
         }
 
@@ -122,8 +124,8 @@
         }
 
         .inline-icon {
-            width: 70px;
-            height: 70px;
+            width: 62px;
+            height: 62px;
             background: rgba(13, 27, 42, 0.85);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -131,7 +133,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             border: 2px solid rgba(255, 255, 255, 0.25);
             box-shadow: 0 8px 25px rgba(0,0,0,0.6);
             transition: all 0.3s ease;
@@ -139,24 +141,28 @@
 
         /* Colores de Brillo Únicos por Botón */
         .btn-dir .inline-icon { color: #4ea8de; border-color: #4ea8de; }
-        .btn-dir:hover .inline-icon { background: #4ea8de; color: #0d1b2a; box-shadow: 0 0 30px #4ea8de; }
+        .btn-dir:hover .inline-icon { background: #4ea8de; color: #0d1b2a; box-shadow: 0 0 25px #4ea8de; }
 
         .btn-rep .inline-icon { color: #2ec4b6; border-color: #2ec4b6; }
-        .btn-rep:hover .inline-icon { background: #2ec4b6; color: #0d1b2a; box-shadow: 0 0 30px #2ec4b6; }
+        .btn-rep:hover .inline-icon { background: #2ec4b6; color: #0d1b2a; box-shadow: 0 0 25px #2ec4b6; }
 
         .btn-trans .inline-icon { color: #ff9f1c; border-color: #ff9f1c; }
-        .btn-trans:hover .inline-icon { background: #ff9f1c; color: #0d1b2a; box-shadow: 0 0 30px #ff9f1c; }
+        .btn-trans:hover .inline-icon { background: #ff9f1c; color: #0d1b2a; box-shadow: 0 0 25px #ff9f1c; }
 
         .btn-fol .inline-icon { color: #e63946; border-color: #e63946; }
-        .btn-fol:hover .inline-icon { background: #e63946; color: #fff; box-shadow: 0 0 30px #e63946; }
+        .btn-fol:hover .inline-icon { background: #e63946; color: #fff; box-shadow: 0 0 25px #e63946; }
+
+        /* Estilo para el nuevo botón de Credenciales (Magenta/Morado Neón) */
+        .btn-cred .inline-icon { color: #b5179e; border-color: #b5179e; }
+        .btn-cred:hover .inline-icon { background: #b5179e; color: #fff; box-shadow: 0 0 25px #b5179e; }
 
         .inline-label {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: 600;
-            margin-top: 8px;
+            margin-top: 6px;
             background: rgba(13, 27, 42, 0.9);
-            padding: 4px 12px;
-            border-radius: 12px;
+            padding: 3px 10px;
+            border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.15);
             white-space: nowrap;
             box-shadow: 0 4px 10px rgba(0,0,0,0.4);
@@ -165,8 +171,8 @@
         /* Pie de página con marca Carrivers Design */
         footer {
             text-align: center;
-            padding: 12px;
-            font-size: 0.8rem;
+            padding: 10px;
+            font-size: 0.75rem;
             color: rgba(255, 255, 255, 0.85);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             background: rgba(13, 27, 42, 0.85);
@@ -184,15 +190,16 @@
         /* Ajuste responsivo para celulares */
         @media (max-width: 576px) {
             .main-title { font-size: 2rem; }
-            .inline-menu-bar { gap: 12px; }
-            .inline-icon { width: 52px; height: 52px; font-size: 1.2rem; }
-            .main-menu-wrapper { padding-bottom: 25px; }
+            .inline-menu-bar { gap: 10px; }
+            .inline-icon { width: 48px; height: 48px; font-size: 1.1rem; }
+            .inline-label { font-size: 0.65rem; padding: 2px 6px; }
+            .main-menu-wrapper { padding-bottom: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Video de Fondo en Bucle con mayitovideo.mp4 -->
+    <!-- Video de Fondo en Bucle con mayitovideo.mp4 optimizado para móviles -->
     <video autoplay muted loop playsinline id="bg-video">
         <source src="mayitovideo.mp4" type="video/mp4">
         Tu navegador no soporta videos en HTML5.
@@ -207,7 +214,7 @@
         <p class="subtitle text-light opacity-85 m-0">Selecciona el módulo al que deseas ingresar:</p>
     </div>
 
-    <!-- Menú Central con Accesos en Línea Flotantes a la altura solicitada -->
+    <!-- Menú Central con Accesos en Línea (5 módulos) -->
     <div class="container main-menu-wrapper">
         <div class="inline-menu-bar">
             
@@ -233,6 +240,12 @@
             <a href="https://registro03coah.github.io/Foliosoficios/" class="inline-item btn-fol">
                 <div class="inline-icon"><i class="fas fa-folder-open"></i></div>
                 <span class="inline-label">Folios y Oficios</span>
+            </a>
+
+            <!-- Nuevo: Etiquetado de Credenciales -->
+            <a href="https://registro03coah.github.io/DestruccionCPV/" class="inline-item btn-cred">
+                <div class="inline-icon"><i class="fas fa-id-card"></i></div>
+                <span class="inline-label">Etiquetado Credenciales</span>
             </a>
 
         </div>
