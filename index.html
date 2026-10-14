@@ -12,6 +12,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden; /* Evita barras de desplazamiento en la página principal */
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(rgba(10, 20, 35, 0.75), rgba(15, 32, 67, 0.85)), url('menuavatar.jpeg');
@@ -19,22 +25,20 @@
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            min-height: 100vh;
             color: #fff;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
-            overflow-x: hidden;
         }
 
         /* Elemento en movimiento flotante en la esquina */
         .floating-frame {
             position: absolute;
-            top: 20px;
+            top: 15px;
             right: 20px;
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             border: 2px solid #4ea8de;
             object-fit: cover;
@@ -49,7 +53,7 @@
         }
 
         .hero-section {
-            padding: 30px 20px 10px 20px;
+            padding: 20px 20px 5px 20px;
             text-align: center;
             position: relative;
             z-index: 5;
@@ -58,176 +62,144 @@
         .welcome-badge {
             background-color: #e63946;
             color: white;
-            padding: 5px 15px;
+            padding: 4px 14px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
             display: inline-block;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             box-shadow: 0 4px 10px rgba(230, 57, 70, 0.4);
         }
 
-        /* Contenedor Principal Centrado para el Menú Holográfico */
+        /* Contenedor Central Compacto */
         .main-menu-wrapper {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             flex-grow: 1;
-            padding: 20px 0;
+            padding: 10px 20px;
         }
 
-        /* Contenedor del Podio Holográfico */
-        .holographic-podium {
-            position: relative;
-            width: 320px;
-            height: 320px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 20px auto;
-        }
-
-        /* Tu Avatar como Núcleo Central */
+        /* Tu Avatar Central */
         .core-avatar-container {
-            position: absolute;
-            width: 130px;
-            height: 130px;
-            z-index: 20;
-            animation: flotar-core 3s ease-in-out infinite;
+            margin-bottom: 25px;
+            z-index: 5;
         }
 
         .core-avatar-img {
-            width: 100%;
-            height: 100%;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             border: 5px solid #e63946;
             object-fit: cover;
-            box-shadow: 0 0 40px rgba(230, 57, 70, 0.7);
+            box-shadow: 0 0 35px rgba(230, 57, 70, 0.7);
+            animation: flotar-core 3s ease-in-out infinite;
         }
 
         @keyframes flotar-core {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+            50% { transform: translateY(-6px); }
         }
 
-        /* Órbita de Iconos */
-        .module-icons-orbit {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            animation: orbit-rotate 60s linear infinite;
+        /* Barra Flotante de Accesos en Línea */
+        .inline-menu-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 900px;
+            z-index: 5;
         }
 
-        /* Pausar la rotación al pasar el mouse para facilitar el clic */
-        .holographic-podium:hover .module-icons-orbit {
-            animation-play-state: paused;
-        }
-
-        .orbit-icon-link {
-            position: absolute;
-            text-decoration: none;
-            color: white;
+        .inline-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: all 0.4s ease;
-            transform-origin: center;
+            text-decoration: none;
+            color: #fff;
+            transition: transform 0.3s ease;
         }
 
-        /* Posicionamiento de los 4 iconos en la órbita (Arriba, Derecha, Abajo, Izquierda) */
-        .orbit-icon-link:nth-child(1) { top: -5%; left: 50%; transform: translate(-50%, 0); } 
-        .orbit-icon-link:nth-child(2) { top: 50%; left: 105%; transform: translate(0, -50%); } 
-        .orbit-icon-link:nth-child(3) { top: 105%; left: 50%; transform: translate(-50%, 0); } 
-        .orbit-icon-link:nth-child(4) { top: 50%; left: -5%; transform: translate(0, -50%); } 
-
-        .orbit-icon-link:hover {
-            transform: scale(1.3);
-            color: #4ea8de;
-            z-index: 30;
+        .inline-item:hover {
+            transform: translateY(-8px);
         }
 
-        .orbit-icon {
-            width: 70px;
-            height: 70px;
+        .inline-icon {
+            width: 65px;
+            height: 65px;
             background: rgba(13, 27, 42, 0.85);
             backdrop-filter: blur(8px);
-            border: 2px solid #4ea8de;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.7rem;
-            color: #4ea8de;
-            box-shadow: 0 0 20px rgba(78, 168, 222, 0.5);
-            transition: all 0.4s ease;
+            font-size: 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
         }
 
-        .orbit-icon-link:hover .orbit-icon {
-            background: rgba(27, 57, 107, 0.95);
-            border-color: #e63946;
-            color: #fff;
-            box-shadow: 0 0 30px rgba(230, 57, 70, 0.8);
-        }
+        /* Colores de Brillo Únicos por Botón */
+        .btn-dir .inline-icon { color: #4ea8de; border-color: #4ea8de; }
+        .btn-dir:hover .inline-icon { background: #4ea8de; color: #0d1b2a; box-shadow: 0 0 25px #4ea8de; }
 
-        .orbit-label {
-            font-size: 0.85rem;
+        .btn-rep .inline-icon { color: #2ec4b6; border-color: #2ec4b6; }
+        .btn-rep:hover .inline-icon { background: #2ec4b6; color: #0d1b2a; box-shadow: 0 0 25px #2ec4b6; }
+
+        .btn-trans .inline-icon { color: #ff9f1c; border-color: #ff9f1c; }
+        .btn-trans:hover .inline-icon { background: #ff9f1c; color: #0d1b2a; box-shadow: 0 0 25px #ff9f1c; }
+
+        .btn-fol .inline-icon { color: #e63946; border-color: #e63946; }
+        .btn-fol:hover .inline-icon { background: #e63946; color: #fff; box-shadow: 0 0 25px #e63946; }
+
+        .inline-label {
+            font-size: 0.8rem;
             font-weight: 600;
             margin-top: 8px;
-            background: rgba(13, 27, 42, 0.9);
+            background: rgba(13, 27, 42, 0.85);
             padding: 3px 10px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             white-space: nowrap;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
         }
 
-        /* La Plataforma Luminosa Inferior (Base) */
-        .light-platform {
-            position: absolute;
-            bottom: 10px;
-            width: 260px;
-            height: 50px;
-            background: radial-gradient(ellipse at center, rgba(78, 168, 222, 0.6) 0%, rgba(78, 168, 222, 0) 70%);
-            border-radius: 50%;
-            filter: blur(8px);
-            z-index: 1;
-        }
-
-        @keyframes orbit-rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
+        /* Pie de página con diseño Carrivers Design en Azul y Rojo */
         footer {
             text-align: center;
-            padding: 15px;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
+            padding: 12px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(13, 27, 42, 0.8);
+            background: rgba(13, 27, 42, 0.85);
             backdrop-filter: blur(8px);
             z-index: 5;
         }
 
+        .carrivers-brand {
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .text-blue-carrivers { color: #4ea8de; }
+        .text-red-carrivers { color: #e63946; }
+
         /* Ajuste responsivo para celulares */
         @media (max-width: 576px) {
-            .holographic-podium {
-                width: 260px;
-                height: 260px;
+            .core-avatar-img {
+                width: 95px;
+                height: 95px;
             }
-            .core-avatar-container {
-                width: 105px;
-                height: 105px;
+            .inline-menu-bar {
+                gap: 12px;
             }
-            .orbit-icon {
-                width: 55px;
-                height: 55px;
-                font-size: 1.3rem;
+            .inline-icon {
+                width: 52px;
+                height: 52px;
+                font-size: 1.2rem;
             }
             .floating-frame {
-                width: 50px;
-                height: 50px;
+                width: 45px;
+                height: 45px;
                 top: 10px;
                 right: 10px;
             }
@@ -244,56 +216,51 @@
         <div>
             <span class="welcome-badge"><i class="fas fa-bolt"></i> Sistema Activo - Módulos MAC</span>
         </div>
-        <h1 class="fw-bold mb-1 text-white">Centro de Mando</h1>
-        <p class="text-light opacity-75 small">Toca o selecciona un módulo para ingresar:</p>
+        <h1 class="fw-bold mb-1 text-white fs-3">Centro de Mando</h1>
+        <p class="text-light opacity-75 small m-0">Selecciona el módulo al que deseas ingresar:</p>
     </div>
 
-    <!-- Menú Holográfico Central Orbital -->
+    <!-- Menú Central Compacto con Accesos en Línea y Flotantes -->
     <div class="container main-menu-wrapper">
-        <div class="holographic-podium">
+        
+        <!-- Tu Avatar Central -->
+        <div class="core-avatar-container">
+            <img src="mayito admin.jpeg" alt="Avatar Mayito Admin" class="core-avatar-img">
+        </div>
+
+        <!-- Barra de Enlaces en Línea -->
+        <div class="inline-menu-bar">
             
-            <!-- 1. Tu Avatar como Núcleo Central -->
-            <div class="core-avatar-container">
-                <img src="mayito admin.jpeg" alt="Avatar Mayito Admin" class="core-avatar-img">
-            </div>
+            <!-- Directorio MAC -->
+            <a href="https://registro03coah.github.io/directorioMAC/" class="inline-item btn-dir">
+                <div class="inline-icon"><i class="fas fa-address-book"></i></div>
+                <span class="inline-label">Directorio MAC</span>
+            </a>
 
-            <!-- 2. Órbita con tus 4 Páginas / Módulos -->
-            <div class="module-icons-orbit">
-                
-                <!-- Directorio MAC -->
-                <a href="https://registro03coah.github.io/directorioMAC/" class="orbit-icon-link">
-                    <div class="orbit-icon"><i class="fas fa-address-book"></i></div>
-                    <span class="orbit-label">Directorio MAC</span>
-                </a>
+            <!-- Sistema de Reportes -->
+            <a href="https://registro03coah.github.io/sistema-reportes-mac/" class="inline-item btn-rep">
+                <div class="inline-icon"><i class="fas fa-chart-line"></i></div>
+                <span class="inline-label">Reportes Diarios</span>
+            </a>
 
-                <!-- Sistema de Reportes -->
-                <a href="https://registro03coah.github.io/sistema-reportes-mac/" class="orbit-icon-link">
-                    <div class="orbit-icon"><i class="fas fa-chart-line"></i></div>
-                    <span class="orbit-label">Reportes Diarios</span>
-                </a>
+            <!-- Transmisiones MAC -->
+            <a href="https://registro03coah.github.io/TransmisionesMAC/" class="inline-item btn-trans">
+                <div class="inline-icon"><i class="fas fa-broadcast-tower"></i></div>
+                <span class="inline-label">Transmisiones</span>
+            </a>
 
-                <!-- Transmisiones MAC -->
-                <a href="https://registro03coah.github.io/TransmisionesMAC/" class="orbit-icon-link">
-                    <div class="orbit-icon"><i class="fas fa-broadcast-tower"></i></div>
-                    <span class="orbit-label">Transmisiones</span>
-                </a>
+            <!-- Folios y Oficios -->
+            <a href="https://registro03coah.github.io/Foliosoficios/" class="inline-item btn-fol">
+                <div class="inline-icon"><i class="fas fa-folder-open"></i></div>
+                <span class="inline-label">Folios y Oficios</span>
+            </a>
 
-                <!-- Folios y Oficios -->
-                <a href="https://registro03coah.github.io/Foliosoficios/" class="orbit-icon-link">
-                    <div class="orbit-icon"><i class="fas fa-folder-open"></i></div>
-                    <span class="orbit-label">Folios y Oficios</span>
-                </a>
-
-            </div>
-
-            <!-- 3. Base Luminosa de Holograma -->
-            <div class="light-platform"></div>
         </div>
     </div>
 
-    <!-- Pie de página -->
+    <!-- Pie de página con marca Carrivers Design -->
     <footer>
-        <p class="mb-0">Módulos MAC © 2026 - Diseñado para optimizar operación y soporte.</p>
+        <p class="mb-0">Módulos MAC © 2026 | Diseñado por <span class="carrivers-brand"><span class="text-blue-carrivers">Carrivers</span> <span class="text-red-carrivers">Design</span></span></p>
     </footer>
 
     <!-- Bootstrap JS Bundle -->
