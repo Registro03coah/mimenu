@@ -15,16 +15,11 @@
         html, body {
             height: 100%;
             margin: 0;
-            overflow: hidden; /* Evita barras de desplazamiento en la página principal */
+            overflow: hidden; /* Evita barras de desplazamiento */
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(rgba(10, 20, 35, 0.75), rgba(15, 32, 67, 0.85)), url('menuavatar.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
             color: #fff;
             display: flex;
             flex-direction: column;
@@ -32,7 +27,21 @@
             position: relative;
         }
 
-        /* Elemento en movimiento flotante en la esquina */
+        /* Video de Fondo a Pantalla Completa en Bucle */
+        #bg-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            object-fit: cover;
+            filter: brightness(0.85) contrast(1.1); /* Ajuste de brillo para que los elementos resalten */
+        }
+
+        /* Elemento dinámico opcional en la esquina */
         .floating-frame {
             position: absolute;
             top: 15px;
@@ -53,7 +62,7 @@
         }
 
         .hero-section {
-            padding: 20px 20px 5px 20px;
+            padding: 25px 20px 10px 20px;
             text-align: center;
             position: relative;
             z-index: 5;
@@ -68,10 +77,10 @@
             font-weight: 600;
             display: inline-block;
             margin-bottom: 5px;
-            box-shadow: 0 4px 10px rgba(230, 57, 70, 0.4);
+            box-shadow: 0 4px 10px rgba(230, 57, 70, 0.5);
         }
 
-        /* Contenedor Central Compacto */
+        /* Contenedor Central */
         .main-menu-wrapper {
             display: flex;
             flex-direction: column;
@@ -79,37 +88,22 @@
             align-items: center;
             flex-grow: 1;
             padding: 10px 20px;
-        }
-
-        /* Tu Avatar Central */
-        .core-avatar-container {
-            margin-bottom: 25px;
             z-index: 5;
         }
 
-        .core-avatar-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 5px solid #e63946;
-            object-fit: cover;
-            box-shadow: 0 0 35px rgba(230, 57, 70, 0.7);
-            animation: flotar-core 3s ease-in-out infinite;
-        }
-
-        @keyframes flotar-core {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
-
-        /* Barra Flotante de Accesos en Línea */
+        /* Barra Flotante de Accesos en Línea con Animación de Flotación (Arriba y Abajo) */
         .inline-menu-bar {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
             max-width: 900px;
-            z-index: 5;
+            animation: flotar-carrusel 4s ease-in-out infinite;
+        }
+
+        @keyframes flotar-carrusel {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); } /* Sube y baja suavemente sin perder su lugar */
         }
 
         .inline-item {
@@ -122,54 +116,56 @@
         }
 
         .inline-item:hover {
-            transform: translateY(-8px);
+            transform: scale(1.1) translateY(-5px);
         }
 
         .inline-icon {
-            width: 65px;
-            height: 65px;
-            background: rgba(13, 27, 42, 0.85);
-            backdrop-filter: blur(8px);
+            width: 70px;
+            height: 70px;
+            background: rgba(13, 27, 42, 0.75);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             border: 2px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
             transition: all 0.3s ease;
         }
 
         /* Colores de Brillo Únicos por Botón */
         .btn-dir .inline-icon { color: #4ea8de; border-color: #4ea8de; }
-        .btn-dir:hover .inline-icon { background: #4ea8de; color: #0d1b2a; box-shadow: 0 0 25px #4ea8de; }
+        .btn-dir:hover .inline-icon { background: #4ea8de; color: #0d1b2a; box-shadow: 0 0 30px #4ea8de; }
 
         .btn-rep .inline-icon { color: #2ec4b6; border-color: #2ec4b6; }
-        .btn-rep:hover .inline-icon { background: #2ec4b6; color: #0d1b2a; box-shadow: 0 0 25px #2ec4b6; }
+        .btn-rep:hover .inline-icon { background: #2ec4b6; color: #0d1b2a; box-shadow: 0 0 30px #2ec4b6; }
 
         .btn-trans .inline-icon { color: #ff9f1c; border-color: #ff9f1c; }
-        .btn-trans:hover .inline-icon { background: #ff9f1c; color: #0d1b2a; box-shadow: 0 0 25px #ff9f1c; }
+        .btn-trans:hover .inline-icon { background: #ff9f1c; color: #0d1b2a; box-shadow: 0 0 30px #ff9f1c; }
 
         .btn-fol .inline-icon { color: #e63946; border-color: #e63946; }
-        .btn-fol:hover .inline-icon { background: #e63946; color: #fff; box-shadow: 0 0 25px #e63946; }
+        .btn-fol:hover .inline-icon { background: #e63946; color: #fff; box-shadow: 0 0 30px #e63946; }
 
         .inline-label {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 600;
             margin-top: 8px;
             background: rgba(13, 27, 42, 0.85);
-            padding: 3px 10px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
             white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
-        /* Pie de página con diseño Carrivers Design en Azul y Rojo */
+        /* Pie de página con marca Carrivers Design */
         footer {
             text-align: center;
             padding: 12px;
             font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.85);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             background: rgba(13, 27, 42, 0.85);
             backdrop-filter: blur(8px);
@@ -185,17 +181,13 @@
 
         /* Ajuste responsivo para celulares */
         @media (max-width: 576px) {
-            .core-avatar-img {
-                width: 95px;
-                height: 95px;
-            }
             .inline-menu-bar {
-                gap: 12px;
+                gap: 15px;
             }
             .inline-icon {
-                width: 52px;
-                height: 52px;
-                font-size: 1.2rem;
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
             }
             .floating-frame {
                 width: 45px;
@@ -208,7 +200,13 @@
 </head>
 <body>
 
-    <!-- Imagen de movimiento flotante en la esquina -->
+    <!-- Video de Fondo en Bucle (Reemplaza la imagen estática) -->
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="fondo-animado.webm" type="video/webm">
+        Tu navegador no soporta videos en HTML5.
+    </video>
+
+    <!-- Imagen opcional en movimiento en la esquina -->
     <img src="videoframe_12538.png" alt="Elemento dinámico MAC" class="floating-frame">
 
     <!-- Cabecera -->
@@ -220,15 +218,8 @@
         <p class="text-light opacity-75 small m-0">Selecciona el módulo al que deseas ingresar:</p>
     </div>
 
-    <!-- Menú Central Compacto con Accesos en Línea y Flotantes -->
+    <!-- Menú Central con Accesos en Línea Flotantes -->
     <div class="container main-menu-wrapper">
-        
-        <!-- Tu Avatar Central -->
-        <div class="core-avatar-container">
-            <img src="mayito admin.jpeg" alt="Avatar Mayito Admin" class="core-avatar-img">
-        </div>
-
-        <!-- Barra de Enlaces en Línea -->
         <div class="inline-menu-bar">
             
             <!-- Directorio MAC -->
@@ -258,7 +249,7 @@
         </div>
     </div>
 
-    <!-- Pie de página con marca Carrivers Design -->
+    <!-- Pie de página con diseño Carrivers Design -->
     <footer>
         <p class="mb-0">Módulos MAC © 2026 | Diseñado por <span class="carrivers-brand"><span class="text-blue-carrivers">Carrivers</span> <span class="text-red-carrivers">Design</span></span></p>
     </footer>
