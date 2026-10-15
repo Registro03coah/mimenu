@@ -25,10 +25,10 @@
             flex-direction: column;
             justify-content: space-between;
             position: relative;
-            background-color: #0d1b2a; /* Color de respaldo mientras carga el video */
+            background-color: #0d1b2a;
         }
 
-        /* Video de Fondo optimizado para pantalla completa tanto en PC como en Celulares */
+        /* Video de Fondo optimizado */
         #bg-video {
             position: fixed;
             top: 50%;
@@ -39,8 +39,38 @@
             height: auto;
             transform: translate(-50%, -50%);
             z-index: -100;
-            object-fit: cover; /* Asegura que cubra toda la pantalla sin distorsionarse ni verse mocho */
+            object-fit: cover;
             filter: brightness(0.85) contrast(1.1);
+        }
+
+        /* Botón Flotante de Ayuda Técnica (Esquina Superior Izquierda) */
+        .btn-help-floating {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            background: rgba(13, 27, 42, 0.85);
+            color: #4ea8de;
+            border: 2px solid #4ea8de;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            z-index: 20;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-help-floating:hover {
+            background: #4ea8de;
+            color: #0d1b2a;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #4ea8de;
         }
 
         .hero-section {
@@ -50,7 +80,7 @@
             z-index: 5;
         }
 
-        /* Insignia superior con bucle de cambio de color */
+        /* Insignia superior */
         .welcome-badge {
             background-color: #e63946;
             color: white;
@@ -70,7 +100,7 @@
             100% { background-color: #2ec4b6; box-shadow: 0 4px 15px rgba(46, 196, 182, 0.6); }
         }
 
-        /* Título Principal grande */
+        /* Título Principal */
         .main-title {
             font-size: 2.5rem;
             font-weight: 800;
@@ -84,7 +114,7 @@
             text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
 
-        /* Contenedor Central ajustado a la altura de referencia baja */
+        /* Contenedor Central */
         .main-menu-wrapper {
             display: flex;
             flex-direction: column;
@@ -95,7 +125,7 @@
             z-index: 5;
         }
 
-        /* Barra Flotante de Accesos en Línea (5 elementos ahora) */
+        /* Barra Flotante de Accesos en Línea */
         .inline-menu-bar {
             display: flex;
             flex-wrap: wrap;
@@ -139,7 +169,7 @@
             transition: all 0.3s ease;
         }
 
-        /* Colores de Brillo Únicos por Botón */
+        /* Colores de Brillo */
         .btn-dir .inline-icon { color: #4ea8de; border-color: #4ea8de; }
         .btn-dir:hover .inline-icon { background: #4ea8de; color: #0d1b2a; box-shadow: 0 0 25px #4ea8de; }
 
@@ -152,7 +182,6 @@
         .btn-fol .inline-icon { color: #e63946; border-color: #e63946; }
         .btn-fol:hover .inline-icon { background: #e63946; color: #fff; box-shadow: 0 0 25px #e63946; }
 
-        /* Estilo para el nuevo botón de Credenciales (Magenta/Morado Neón) */
         .btn-cred .inline-icon { color: #b5179e; border-color: #b5179e; }
         .btn-cred:hover .inline-icon { background: #b5179e; color: #fff; box-shadow: 0 0 25px #b5179e; }
 
@@ -168,7 +197,56 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.4);
         }
 
-        /* Pie de página con marca Carrivers Design */
+        /* Estilos personalizados para la Ventana Modal de Ayuda */
+        .modal-content {
+            background: rgba(13, 27, 42, 0.95);
+            backdrop-filter: blur(15px);
+            border: 2px solid #4ea8de;
+            border-radius: 20px;
+            color: #fff;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .modal-footer {
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .avatar-modal-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 3px solid #e63946;
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(230,57,70,0.6);
+            margin-bottom: 10px;
+        }
+
+        .help-step-title {
+            color: #4ea8de;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-top: 10px;
+        }
+
+        .help-text {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.85);
+        }
+
+        .dns-code {
+            background: rgba(0,0,0,0.5);
+            color: #2ec4b6;
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-weight: 600;
+        }
+
+        /* Pie de página */
         footer {
             text-align: center;
             padding: 10px;
@@ -187,23 +265,29 @@
         .text-blue-carrivers { color: #4ea8de; }
         .text-red-carrivers { color: #e63946; }
 
-        /* Ajuste responsivo para celulares */
+        /* Ajuste responsivo */
         @media (max-width: 576px) {
             .main-title { font-size: 2rem; }
             .inline-menu-bar { gap: 10px; }
             .inline-icon { width: 48px; height: 48px; font-size: 1.1rem; }
             .inline-label { font-size: 0.65rem; padding: 2px 6px; }
             .main-menu-wrapper { padding-bottom: 20px; }
+            .btn-help-floating { top: 10px; left: 10px; font-size: 0.7rem; padding: 6px 12px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Video de Fondo en Bucle con mayitovideo.mp4 optimizado para móviles -->
+    <!-- Video de Fondo en Bucle -->
     <video autoplay muted loop playsinline id="bg-video">
         <source src="mayitovideo.mp4" type="video/mp4">
         Tu navegador no soporta videos en HTML5.
     </video>
+
+    <!-- Botón Flotante de Ayuda Celular -->
+    <button class="btn-help-floating" data-bs-toggle="modal" data-bs-target="#helpModal">
+        <i class="fas fa-signal"></i> ¿Problemas 4G/5G?
+    </button>
 
     <!-- Cabecera -->
     <div class="hero-section">
@@ -214,7 +298,7 @@
         <p class="subtitle text-light opacity-85 m-0">Selecciona el módulo al que deseas ingresar:</p>
     </div>
 
-    <!-- Menú Central con Accesos en Línea (5 módulos) -->
+    <!-- Menú Central con Accesos en Línea -->
     <div class="container main-menu-wrapper">
         <div class="inline-menu-bar">
             
@@ -242,7 +326,7 @@
                 <span class="inline-label">Folios y Oficios</span>
             </a>
 
-            <!-- Nuevo: Etiquetado de Credenciales -->
+            <!-- Etiquetado de Credenciales -->
             <a href="https://registro03coah.github.io/DestruccionCPV/" class="inline-item btn-cred">
                 <div class="inline-icon"><i class="fas fa-id-card"></i></div>
                 <span class="inline-label">Etiquetado Credenciales</span>
@@ -251,12 +335,72 @@
         </div>
     </div>
 
-    <!-- Pie de página con diseño Carrivers Design -->
+    <!-- VENTANA MODAL DE RECOMENDACIONES TÉCNICAS -->
+    <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold text-info fs-6" id="helpModalLabel">
+                        <i class="fas fa-shield-alt"></i> Asistencia Técnica Móvil
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start">
+                    
+                    <!-- Avatar al centro en la parte superior -->
+                    <div class="text-center mb-3">
+                        <img src="mayito admin.jpeg" alt="Mayito Admin" class="avatar-modal-img">
+                        <h4 class="fw-bold text-white fs-5 m-0">Recomendaciones Técnicas para 4G, 5G y Datos Móviles</h4>
+                    </div>
+
+                    <!-- Paso 1 -->
+                    <div class="mb-3">
+                        <div class="help-step-title">1. Configurar un DNS Privado (La solución definitiva)</div>
+                        <p class="help-text mb-1">Esto obliga a tu teléfono a usar los servidores seguros de Google o Cloudflare tanto en Wi-Fi como con datos móviles, evitando que los bloqueos de tu operador afecten la página:</p>
+                        <ul class="help-text ps-3 mb-1">
+                            <li>Ve a <strong>Ajustes > Red e internet</strong> (o Conexiones) > <strong>DNS privado</strong>.</li>
+                            <li>Selecciona la opción <em>"Nombre de host del proveedor de DNS privado"</em>.</li>
+                            <li>Escribe exactamente: <span class="dns-code">dns.google</span> (También puedes usar <span class="dns-code">one.one.one.one</span>).</li>
+                            <li>Dale a <strong>Guardar</strong> y vuelve a intentar abrir tu página.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Paso 2 -->
+                    <div class="mb-3">
+                        <div class="help-step-title">2. Reiniciar la conexión móvil (Modo Avión)</div>
+                        <p class="help-text mb-1">A veces la antena del operador se queda con una ruta de internet saturada o fallida:</p>
+                        <p class="help-text m-0">Activa el <strong>Modo Avión</strong> de tu celular durante 10 segundos y desactívalo. Esto hace que la red móvil te asigne una nueva conexión limpia.</p>
+                    </div>
+
+                    <!-- Paso 3 -->
+                    <div>
+                        <div class="help-step-title">3. Limpiar la caché del navegador en el celular</div>
+                        <p class="help-text mb-1">Si tu celular se quedó "atrapado" intentando cargar la página con el error anterior guardado en la memoria:</p>
+                        <ul class="help-text ps-3 m-0">
+                            <li>Abre <strong>Google Chrome</strong> en tu teléfono.</li>
+                            <li>Toca los tres puntos de la esquina superior derecha > <strong>Historial > Borrar datos de navegación</strong>.</li>
+                            <li>Asegúrate de marcar <em>"Imágenes y archivos en caché"</em> y dale a <strong>Borrar datos</strong>.</li>
+                        </ul>
+                    </div>
+
+                    <div class="alert alert-info bg-transparent text-info border-info mt-3 p-2 small text-center mb-0">
+                        <i class="fas fa-lightbulb"></i> Con configurar el DNS privado en <strong>dns.google</strong>, el problema de acceso con datos móviles desaparecerá por completo.
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-light btn-sm w-100 rounded-pill" data-bs-dismiss="modal">Entendido, cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie de página con marca Carrivers Design -->
     <footer>
         <p class="mb-0">Módulos MAC © 2026 | Diseñado por <span class="carrivers-brand"><span class="text-blue-carrivers">Carrivers</span> <span class="text-red-carrivers">Design</span></span></p>
     </footer>
 
-    <!-- Bootstrap JS Bundle -->
+    <!-- Bootstrap JS Bundle (Necesario para que abra el modal) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
