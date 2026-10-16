@@ -130,8 +130,8 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 18px;
-            max-width: 1000px;
+            gap: 15px;
+            max-width: 1100px;
             animation: flotar-carrusel 4s ease-in-out infinite;
         }
 
@@ -169,7 +169,7 @@
             transition: all 0.3s ease;
         }
 
-        /* Colores de Brillo */
+        /* Colores de Brillo Únicos */
         .btn-dir .inline-icon { color: #4ea8de; border-color: #4ea8de; }
         .btn-dir:hover .inline-icon { background: #4ea8de; color: #0d1b2a; box-shadow: 0 0 25px #4ea8de; }
 
@@ -185,6 +185,10 @@
         .btn-cred .inline-icon { color: #b5179e; border-color: #b5179e; }
         .btn-cred:hover .inline-icon { background: #b5179e; color: #fff; box-shadow: 0 0 25px #b5179e; }
 
+        /* Estilo para el nuevo botón de Vacaciones (Azul Cielo Neón) */
+        .btn-vac .inline-icon { color: #48cae4; border-color: #48cae4; }
+        .btn-vac:hover .inline-icon { background: #48cae4; color: #0d1b2a; box-shadow: 0 0 25px #48cae4; }
+
         .inline-label {
             font-size: 0.75rem;
             font-weight: 600;
@@ -197,7 +201,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.4);
         }
 
-        /* Estilos personalizados para la Ventana Modal de Ayuda */
+        /* Estilos para la Ventana Modal de Ayuda */
         .modal-content {
             background: rgba(13, 27, 42, 0.95);
             backdrop-filter: blur(15px);
@@ -268,9 +272,9 @@
         /* Ajuste responsivo */
         @media (max-width: 576px) {
             .main-title { font-size: 2rem; }
-            .inline-menu-bar { gap: 10px; }
-            .inline-icon { width: 48px; height: 48px; font-size: 1.1rem; }
-            .inline-label { font-size: 0.65rem; padding: 2px 6px; }
+            .inline-menu-bar { gap: 8px; }
+            .inline-icon { width: 44px; height: 44px; font-size: 1rem; }
+            .inline-label { font-size: 0.6rem; padding: 2px 5px; }
             .main-menu-wrapper { padding-bottom: 20px; }
             .btn-help-floating { top: 10px; left: 10px; font-size: 0.7rem; padding: 6px 12px; }
         }
@@ -298,7 +302,7 @@
         <p class="subtitle text-light opacity-85 m-0">Selecciona el módulo al que deseas ingresar:</p>
     </div>
 
-    <!-- Menú Central con Accesos en Línea -->
+    <!-- Menú Central con Accesos en Línea (6 módulos ahora) -->
     <div class="container main-menu-wrapper">
         <div class="inline-menu-bar">
             
@@ -329,7 +333,13 @@
             <!-- Etiquetado de Credenciales -->
             <a href="https://registro03coah.github.io/DestruccionCPV/" class="inline-item btn-cred">
                 <div class="inline-icon"><i class="fas fa-id-card"></i></div>
-                <span class="inline-label">Etiquetado Credenciales</span>
+                <span class="inline-label">Credenciales</span>
+            </a>
+
+            <!-- Nuevo: Vacaciones -->
+            <a href="https://registro03coah.github.io/vacaciones" class="inline-item btn-vac">
+                <div class="inline-icon"><i class="fas fa-umbrella-beach"></i></div>
+                <span class="inline-label">Vacaciones</span>
             </a>
 
         </div>
@@ -400,7 +410,7 @@
         <p class="mb-0">Módulos MAC © 2026 | Diseñado por <span class="carrivers-brand"><span class="text-blue-carrivers">Carrivers</span> <span class="text-red-carrivers">Design</span></span></p>
     </footer>
 
-    <!-- Bootstrap JS Bundle (Necesario para que abra el modal) -->
+    <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
